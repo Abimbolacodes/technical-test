@@ -11,7 +11,7 @@ import ProductItem from "./product-item";
 
 
 export interface Item {
-  id: string;
+  _id: string;
   name: string;
   amount: number;
   comment?: string | null; // Allow comment to be null
@@ -45,7 +45,7 @@ export default function ProductsPage() {
       // 🛠️ Normalize backend `_id` to `id`
       const normalized = data.map((item:Item) => ({
         ...item,
-        id: item.id , // fallback to _id
+        id: item._id , // fallback to _id
       }));
   
       setItems(normalized);
@@ -141,7 +141,7 @@ export default function ProductsPage() {
       <div className="space-y-2">
         {items.map((item) => (
           <ProductItem
-            key={item.id}
+            key={item._id}
             item={item}
             setItems={setItems}
           />
