@@ -1,4 +1,4 @@
-
+'use client';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/src/layout/button";
@@ -46,7 +46,7 @@ export default function LoginPage() {
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <Label text="Email" />
+            <Label htmlFor="Email" > Email </Label>
             <Input
               id="email"
               type="email"

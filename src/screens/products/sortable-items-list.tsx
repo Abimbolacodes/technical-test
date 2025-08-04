@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   DndContext,
@@ -14,8 +14,6 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-
-import { useState } from "react";
 import ProductItem from "./product-item"; // Your existing item component
 import type { Item } from "@/server/service/item.service"; // Update with correct path
 

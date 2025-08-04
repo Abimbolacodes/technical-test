@@ -1,5 +1,5 @@
 // src/layout/modal.tsx
-"use client";
+// "use client";
 
 import { ReactNode } from "react";
 

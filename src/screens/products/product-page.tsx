@@ -35,29 +35,6 @@ export default function ProductsPage() {
     }
   }, [status, router]);
 
-  // const loadItems = async () => {
-  //   try {
-  //     const fetchedItems = await fetchItems(session?.user?.email || '');
-  //     setItems(fetchedItems);
-  //   } catch (error) {
-  //     console.error("Failed to load items:", error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
-  // const handleAddItem = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   try {
-  //     const createdItem = await createItem(newItem);
-  //     setItems([...items, createdItem]);
-  //     setNewItem({ name: "", amount: 1, comment: "" });
-  //     setShowAddForm(false);
-  //   } catch (error) {
-  //     console.error("Failed to add item:", error);
-  //   }
-  // };
-
 
   const loadItems = async () => {
     try {

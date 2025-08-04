@@ -1,4 +1,4 @@
-
+'use client';
 import { useState } from "react";
 import { DndContext, closestCenter, type DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy,arrayMove } from "@dnd-kit/sortable";
