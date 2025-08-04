@@ -6,6 +6,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  DragEndEvent,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -25,7 +26,7 @@ type Props = {
 export default function SortableItemsList({ items, setItems }: Props) {
   const sensors = useSensors(useSensor(PointerSensor));
 
-  const handleDragEnd = async (event: any) => {
+  const handleDragEnd = async (event:DragEndEvent) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
 

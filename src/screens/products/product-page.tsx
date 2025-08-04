@@ -43,7 +43,7 @@ export default function ProductsPage() {
       const data = await res.json();
   
       // 🛠️ Normalize backend `_id` to `id`
-      const normalized = data.map((item: any) => ({
+      const normalized = data.map((item) => ({
         ...item,
         id: item.id || item._id, // fallback to _id
       }));

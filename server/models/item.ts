@@ -10,4 +10,4 @@ const ItemSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-export const Item = mongoose.models.Item || mongoose.model("Item", ItemSchema);
+export const Item =  mongoose.model("Item", ItemSchema);
