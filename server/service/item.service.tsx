@@ -5,7 +5,7 @@ import { Item } from "@/server/models/item";
 import { User } from "@/server/models/user";
 
 export interface Items {
-  id: string;
+  _id: string;
   name: string;
   amount: number;
   comment?: string | null;
@@ -22,7 +22,7 @@ export async function fetchItems(email: string): Promise<Items[]> {
   const items = await Item.find({ userId: user._id }).sort({ order: 1 });
 
   return items.map((item) => ({
-    id: item._id.toString(), 
+    _id: item._id.toString(), 
     name: item.name,
     amount: item.amount,
     comment: item?.comment,
