@@ -30,8 +30,8 @@ export default function SortableItemsList({ items, setItems }: Props) {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
 
-    const oldIndex = items.findIndex((item) => item._id === active.id);
-    const newIndex = items.findIndex((item) => item._id === over.id);
+    const oldIndex = items.findIndex((item) => item.id === active.id);
+    const newIndex = items.findIndex((item) => item.id === over.id);
 
     const newItems = arrayMove(items, oldIndex, newIndex);
     setItems(newItems);
@@ -41,17 +41,17 @@ export default function SortableItemsList({ items, setItems }: Props) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(
-        newItems.map((item, index) => ({ id: item._id, order: index }))
+        newItems.map((item, index) => ({ id: item.id, order: index }))
       ),
     });
   };
 
   return (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={items.map((item) => item._id)} strategy={verticalListSortingStrategy}>
+      <SortableContext items={items.map((item) => item.id)} strategy={verticalListSortingStrategy}>
         <div className="space-y-4">
           {items.map((item) => (
-            <SortableItem key={item._id} item={item} setItems={setItems} />
+            <SortableItem key={item.id} item={item} setItems={setItems} />
           ))}
         </div>
       </SortableContext>
@@ -60,7 +60,7 @@ export default function SortableItemsList({ items, setItems }: Props) {
 }
 
 type SortableItemProps = {
-  item: Items;
+  item: Item;
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
 };
 
