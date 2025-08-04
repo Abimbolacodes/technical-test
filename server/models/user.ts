@@ -5,4 +5,4 @@ const UserSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-export const User = mongoose.models.User || mongoose.model("User", UserSchema);
+export const User =  mongoose.model("User", UserSchema);
