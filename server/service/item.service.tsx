@@ -4,16 +4,16 @@ import { connectMongo } from "@/src/config/mongoose";
 import { Item } from "@/server/models/item";
 import { User } from "@/server/models/user";
 
-export interface Item {
+export interface Items {
   id: string;
   name: string;
   amount: number;
-  comment?: string;
+  comment?: string | null;
   userId: string;
   order: number;
 }
 
-export async function fetchItems(email: string): Promise<Item[]> {
+export async function fetchItems(email: string): Promise<Items[]> {
   await connectMongo();
   const user = await User.findOne({ email });
   if (!user) return [];
@@ -25,7 +25,7 @@ export async function fetchItems(email: string): Promise<Item[]> {
     id: item._id.toString(), 
     name: item.name,
     amount: item.amount,
-    comment: item.comment,
+    comment: item?.comment,
     userId: item.userId.toString(),
     order: item.order,
   }));
