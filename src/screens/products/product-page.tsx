@@ -3,22 +3,14 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-// import { Item} from "@/server/service/item.service";
+import { Item } from "@/server/service/item.service";
 import { Button } from "@/src/layout/button";
 import { Input } from "@/src/layout/input";
 import { Label } from "@/src/layout/label";
 import ProductItem from "./product-item";
 
 
-export interface Item {
-  id: string;
-  name: string;
-  amount: number;
-  comment?: string;
-  userId: string;
-  order: number;
-  
-}
+
 export default function ProductsPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -45,7 +37,7 @@ export default function ProductsPage() {
       // 🛠️ Normalize backend `_id` to `id`
       const normalized = data.map((item:Item) => ({
         ...item,
-        id: item.id , // fallback to _id
+        id: item._id , // fallback to _id
       }));
   
       setItems(normalized);
@@ -141,8 +133,8 @@ export default function ProductsPage() {
       <div className="space-y-2">
         {items.map((item) => (
           <ProductItem
-            key={item.id}
-            item={item}
+            key={item._id}
+            items={item}
             setItems={setItems}
           />
         ))}

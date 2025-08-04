@@ -7,7 +7,7 @@ import {Modal} from "@/src/layout/modal"
 
 
 type Item = {
-  id: string;
+  _id: string;
   name: string;
   amount: number;
   comment?: string;
@@ -15,13 +15,13 @@ type Item = {
   userId: string;
 };
 
-type Props = { 
+type ProductItemProps = { 
   item: Item; 
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
   // index: number;
 };
 
-export default function ProductItem({ item, setItems }: Props) {
+export default function ProductItem({ item, setItems }: ProductItemProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [isViewing, setIsViewing] = useState(false);
   const [editData, setEditData] = useState({
@@ -31,30 +31,30 @@ export default function ProductItem({ item, setItems }: Props) {
   });
 
   const handleSave = async () => {
-    await fetch(`/api/items/${item.id}`, {
+    await fetch(`/api/items/${item._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editData),
     });
   
     setIsEditing(false);
-    setItems(prev => prev.map(it => it.id === item.id ? { ...it, ...editData } : it));
+    setItems(prev => prev.map(it => it._id === item._id ? { ...it, ...editData } : it));
   };
   // console.log("Rendering Item:", item);
 
   
   const handleDelete = async () => {
-    if (!item.id) {
+    if (!item._id) {
       console.error("Item ID is undefined. Cannot delete.");
       return;
     }
   
     try {
-      await fetch(`/api/items/${item.id}`, {
+      await fetch(`/api/items/${item._id}`, {
         method: "DELETE",
       });
   
-      setItems((prev) => prev.filter((it) => it.id !== item.id));
+      setItems((prev) => prev.filter((it) => it._id !== item._id));
     } catch (error) {
       console.error("Delete failed:", error);
     }
@@ -74,7 +74,7 @@ export default function ProductItem({ item, setItems }: Props) {
   // }
   const moveItem = (direction: "up" | "down") => {
     setItems((prevItems) => {
-      const index = prevItems.findIndex((i) => i.id === item.id);
+      const index = prevItems.findIndex((i) => i._id === item._id);
       if (index === -1) return prevItems;
   
       const newIndex = direction === "up" ? index - 1 : index + 1;

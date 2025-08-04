@@ -2,18 +2,19 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectMongo } from "@/src/config/mongoose";
 import { Item } from "@/server/models/item";
+// import {Item} from "@/src/types/items";
 import { User } from "@/server/models/user";
 
-export interface Items {
+export interface Item{
   _id: string;
   name: string;
   amount: number;
-  comment?: string | null;
+  comment?: string | null; // Allow comment to be null
   userId: string;
   order: number;
 }
 
-export async function fetchItems(email: string): Promise<Items[]> {
+export async function fetchItems(email: string): Promise<Item[]> {
   await connectMongo();
   const user = await User.findOne({ email });
   if (!user) return [];
