@@ -1,4 +1,4 @@
-
+"use client";
 import { useForm } from "react-hook-form";
 import { Button } from "@/src/layout/button";
 import { Input } from "@/src/layout/input";

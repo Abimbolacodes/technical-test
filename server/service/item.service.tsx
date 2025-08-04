@@ -1,3 +1,4 @@
+"use client";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectMongo } from "@/src/config/mongoose";
