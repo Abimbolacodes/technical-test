@@ -14,7 +14,7 @@ export interface Item {
   id: string;
   name: string;
   amount: number;
-  comment?: string;
+  comment?: string | null; // Allow comment to be null
   userId: string;
   order: number;
   

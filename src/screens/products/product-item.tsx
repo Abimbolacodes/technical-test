@@ -10,7 +10,7 @@ type Item = {
   _id: string;
   name: string;
   amount: number;
-  comment?: string;
+  comment?: string | null;
   order: number;
   userId: string;
 };

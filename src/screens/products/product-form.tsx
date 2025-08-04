@@ -8,7 +8,7 @@ import { Label } from "@/src/layout/label";
 type FormData = {
   name: string;
   amount: number;
-  comment?: string;
+  comment?: string | null;
 };
 
 export default function ProductForm() {
