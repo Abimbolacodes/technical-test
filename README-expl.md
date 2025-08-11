@@ -21,7 +21,7 @@ NEXTAUTH_URL=http://localhost:3000
 
 
 Run the development server:
-https://technical-test-r8gm.vercel.app/login
+https://technical-test-p1vc.vercel.app
 
 npm run dev
 
